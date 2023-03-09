@@ -14,8 +14,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: issiwara
-          password: Ol50941097
+          username: "issiwara"
+          password: "Ol50941097"
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag issiwara/fiverrdemo
