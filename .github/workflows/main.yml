@@ -1,0 +1,24 @@
+name: Publish Docker Image to Docker Hub
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: issiwara
+          password: Ol50941097
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag issiwara/fiverrdemo
+
+      - name: Docker Push
+        run: docker push issiwara/fiverrdemo
