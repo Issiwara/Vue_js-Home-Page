@@ -1,4 +1,8 @@
-pipeline {
+docker.withTool('docker'){
+    docker.withRegistry('repo','credentials') { 
+    
+    
+    pipeline {
     agent any 
     environment {
     DOCKERHUB_CREDENTIALS = credentials('issiwara-dockerhub')
@@ -27,4 +31,8 @@ post {
             sh 'docker logout'
         }
     }
+}
+
+
+  }
 }
