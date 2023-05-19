@@ -1,5 +1,5 @@
 docker.withTool('docker'){
-    docker.withRegistry('repo','credentials') { 
+
     
     
     pipeline {
@@ -34,5 +34,5 @@ post {
 }
 
 
-  }
+  
 }
