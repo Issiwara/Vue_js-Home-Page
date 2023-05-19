@@ -7,7 +7,8 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t issiwara/mern-jenkins:$BUILD_NUMBER .'
+                sh 'docker build . -f Dockerfile --tag issiwara/mern-jenkins:$BUILD_NUMBER'
+                
             }
         }
         stage('login to dockerhub') {
