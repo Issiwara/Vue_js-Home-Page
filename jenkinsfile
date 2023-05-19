@@ -7,7 +7,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker version'
+                sh 'docker build . --file Dockerfile --tag issiwara/mern-jenkins:$BUILD_NUMBER'
                 
             }
         }
