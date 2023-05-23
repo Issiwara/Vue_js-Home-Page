@@ -31,7 +31,7 @@ pipeline {
         withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credentials-id', keyFileVariable: 'SSH_KEY')]) {
           sshagent(['SSH_KEY']) {
             // Run the Docker image on the EC2 instance
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@34.227.143.242 'docker run -d -p 80:80 mern-jenkins:$BUILD_NUMBER'"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@34.227.143.242 'docker run -d -p 80:80 issiwara/mern-jenkins:$BUILD_NUMBER'"
           }
         }
       }
