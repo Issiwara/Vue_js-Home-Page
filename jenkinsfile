@@ -27,7 +27,7 @@ pipeline {
       steps {
         script {
           // Pull the Docker image from Docker Hub
-          docker.image('issiwara/mern-jenkins:$BUILD_NUMBER').pull()
+          //docker.image('issiwara/mern-jenkins:$BUILD_NUMBER').pull()
         }
       }
     }
