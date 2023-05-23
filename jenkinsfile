@@ -22,9 +22,7 @@ pipeline {
                 sh 'docker push issiwara/mern-jenkins:$BUILD_NUMBER'
             }
         }
-}
 
-stages {
     stage('Pull Docker Image') {
       steps {
         script {
