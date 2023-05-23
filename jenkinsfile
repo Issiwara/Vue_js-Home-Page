@@ -23,6 +23,29 @@ pipeline {
             }
         }
 }
+
+stages {
+    stage('Pull Docker Image') {
+      steps {
+        script {
+          // Pull the Docker image from Docker Hub
+          docker.image('issiwara/mern-jenkins:$BUILD_NUMBER').pull()
+        }
+      }
+    }
+    
+    stage('Deploy to EC2') {
+      steps {
+        // Connect to the EC2 instance using SSH
+        withCredentials([sshUserPrivateKey(credentialsId: 'ssh-credentials-id', keyFileVariable: 'SSH_KEY')]) {
+          sshagent(['SSH_KEY']) {
+            // Run the Docker image on the EC2 instance
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@3.237.51.60 'docker run -d -p 80:80 mern-jenkins:$BUILD_NUMBER'"
+          }
+        }
+      }
+    }
+  }
 post {
         always {
             sh 'docker logout'
